@@ -10,7 +10,7 @@ export class LinksInBio extends Component {
 
     render() {
         return (
-            <div>
+            <div className='row'>
                 {
                     Array.isArray(this.props.linksInBio) ?
 
