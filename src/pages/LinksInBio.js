@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LinkInBio from '../components/LinkInBio';
 import { fetchLinksInBio } from '../store/actions/fetchLinksInBio';
+import Header from '../components/Header'
 
 export class LinksInBio extends Component {
     componentDidMount() {
@@ -10,23 +11,26 @@ export class LinksInBio extends Component {
 
     render() {
         return (
-            <div className='row'>
-                {
-                    Array.isArray(this.props.linksInBio) ?
+            <React.Fragment>
+                <Header />
+                <div className='row'>
+                    {
+                        Array.isArray(this.props.linksInBio) ?
 
-                    this.props.linksInBio.map(linkInBio => (
-                        <LinkInBio
-                            link={linkInBio.link}
-                            image={linkInBio.image}
-                            title={linkInBio.title}
-                        />
-                    ))
+                        this.props.linksInBio.map(linkInBio => (
+                            <LinkInBio
+                                link={linkInBio.link}
+                                image={linkInBio.image}
+                                title={linkInBio.title}
+                            />
+                        ))
 
-                    : 
+                        : 
 
-                    null
-                }
-            </div>
+                        null
+                    }
+                </div>
+            </React.Fragment>
         )
     }
 }
