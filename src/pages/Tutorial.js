@@ -56,7 +56,13 @@ export class Tutorial extends Component {
                 />
                 <Content content=
                     {
-                        this.state.content || this.props.tutorial !== null ? 
+                        this.state.content !== null ?
+                        
+                        this.state.content
+
+                        :
+                        
+                        this.props.tutorial !== null ? 
                         
                         this.props.tutorial.tutorial_pages[0].content 
                         

@@ -27,12 +27,15 @@ class Sidenav extends Component {
         >
           <div style={{paddingTop: '11vh'}} className="container">
 
-            <h5 className="blue-text" >{this.props.heading}</h5>
+            <h5 className="blue-text center" >{this.props.heading}</h5>
             {
               Array.isArray(this.props.tutorialPages) ?
 
               this.props.tutorialPages.map(tutorialPage => (
-                <li onClick={() => this.props.changeContent(tutorialPage.content)}>
+                <li 
+                  onClick={() => this.props.changeContent(tutorialPage.content)}
+                  style={{cursor: "pointer"}}
+                >
                   {tutorialPage.heading}
                 </li>
               ))

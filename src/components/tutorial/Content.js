@@ -4,7 +4,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 export class Content extends Component {
     render() {
         return (
-            <div className="center blue offset300px">
+            <div className="offset300px">
                 {
                     ReactHtmlParser(this.props.content)
                 }
