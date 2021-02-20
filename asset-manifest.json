@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/spidersdotcofrontend/static/js/main.f32938ce.chunk.js",
-    "main.js.map": "/spidersdotcofrontend/static/js/main.f32938ce.chunk.js.map",
+    "main.js": "/spidersdotcofrontend/static/js/main.c8ace03e.chunk.js",
+    "main.js.map": "/spidersdotcofrontend/static/js/main.c8ace03e.chunk.js.map",
     "runtime-main.js": "/spidersdotcofrontend/static/js/runtime-main.93cd10ae.js",
     "runtime-main.js.map": "/spidersdotcofrontend/static/js/runtime-main.93cd10ae.js.map",
     "static/css/2.f4ae4707.chunk.css": "/spidersdotcofrontend/static/css/2.f4ae4707.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.93cd10ae.js",
     "static/css/2.f4ae4707.chunk.css",
     "static/js/2.c6090d0d.chunk.js",
-    "static/js/main.f32938ce.chunk.js"
+    "static/js/main.c8ace03e.chunk.js"
   ]
 }
