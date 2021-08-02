@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import BlogCard from '../components/blog/BlogCard'
+import ContactInfo from '../components/blog/ContactInfo'
 import Navbar from '../components/navbar/Navbar'
 
 export class Blog extends Component {
@@ -6,6 +8,8 @@ export class Blog extends Component {
         return (
             <div>
                 <Navbar />
+                <ContactInfo />
+                <BlogCard />
             </div>
         )
     }
