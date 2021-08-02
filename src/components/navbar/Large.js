@@ -9,6 +9,7 @@ export class Large extends Component {
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="#" style={logoStyles} class="black-text">spidersdotco</a></li>
                             <li><a href="/" className="black-text">blog</a></li>
+                            <li><a href="/portfolio" className="black-text">portfolio</a></li>
                         </ul>
                     </div>
                 </nav>

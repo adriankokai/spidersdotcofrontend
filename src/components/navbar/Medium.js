@@ -9,6 +9,7 @@ export class Medium extends Component {
                         <ul id="nav-mobile" class="right">
                             <li><a href="#" style={logoStyles} class="black-text">zimcoolestkids shop</a></li>
                             <li><a href="/" className="black-text">blog</a></li>
+                            <li><a href="/portfolio" className="black-text">portfolio</a></li>
                         </ul>
                     </div>
                 </nav>

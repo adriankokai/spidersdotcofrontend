@@ -49,6 +49,7 @@ class Modal extends Component {
                     <ul className="row">
                         <li className="col s12">
                             <a href="/" className="black-text center-align">blog</a>
+                            <a href="/portfolio" className="black-text center-align">portfolio</a>
                         </li>
                     </ul>
                 </div>
