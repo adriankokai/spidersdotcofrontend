@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import Navbar from '../components/navbar/Navbar'
+import Navcard from '../components/navcard/Navcard'
 import tac from '../images/tac.png'
 
 export class Portfolio extends Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <h3 className="center amber-text text-accent-3">Recent Work</h3>
-                <hr />
+                <Navbar large={0} />
+                <Navcard portfolio={1} />
+                <div className="center">
+                    <a className="center btn black">Recent Work</a>
+                </div>
+                <hr style={{margin: "15px"}} />
                 <br /><br />
                 <a href="https://thaantisocialcircle.web.app" target="_blank" >
                     <div className="row ">
