@@ -8,7 +8,15 @@ export class Navbar extends Component {
         return (
             <div>
                 <div className="hide-on-med-and-down">
-                    <Large />
+                    {
+                        this.props.large ?
+
+                        <Large />
+
+                        :
+
+                        null
+                    }
                 </div>
                 <div className="hide-on-small-only hide-on-large-only row green darken-4">
                     <Medium />
