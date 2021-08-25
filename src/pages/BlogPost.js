@@ -22,12 +22,18 @@ export class BlogPost extends Component {
                         <i className="material-icons yellow-text">home</i>
                         Go back home
                     </a>
-                    <p> { 
+                    { 
                         this.props.article ?
-                        this.props.article.date
+
+                        <>
+                        <h3 className="black" > { this.props.article.title } </h3>
+                        <p>published: {this.props.article.date}</p>
+                        </>
+
                         :
+                        
                         null
-                    } </p>
+                    } 
                 </div>
                 {
                     this.props.article !== null && this.props.article !== undefined ?
