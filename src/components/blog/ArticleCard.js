@@ -13,7 +13,7 @@ export class ArticleCard extends Component {
                             { this.props.article.title }
                             <i class="material-icons right">more_vert</i>
                         </span>
-                        <p><a href={'/blogpost/' + this.props.article.id}>Read more</a></p>
+                        <p><a href={'/' + this.props.article.title.replace(/\s/g, "-")}>Read more</a></p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">

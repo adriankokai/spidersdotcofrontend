@@ -5,6 +5,7 @@ import Navcard from '../components/navcard/Navcard'
 import Navbar from '../components/navbar/Navbar'
 import { connect } from 'react-redux'
 import { fetchArticles} from '../store/actions/fetchArticles'
+import NewsLetterForm from '../components/blog/NewsLetterForm'
 
 export class Blog extends Component {
     componentDidMount = () => {
@@ -16,6 +17,7 @@ export class Blog extends Component {
             <div>
                 <Navbar large={0} />
                 <Navcard blog={1} />
+                <NewsLetterForm />
                 <ContactInfo />
                 {
                     Array.isArray(this.props.articles) ?
