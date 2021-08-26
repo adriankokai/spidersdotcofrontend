@@ -12,12 +12,6 @@ export class BlogPost extends Component {
     componentDidMount = () => {
         const id = this.props.match.params.id
         this.props.onFetchArticle(id)
-        if (this.props.article) {
-            window.history.pushState(
-                '', 
-                this.props.article.title, 
-                `/${this.props.article.title}/`
-            )}
     }
     
     render() {
