@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux'
 import { fetchArticle } from '../store/actions/fetchArticle'
 import ContactInfo from '../components/blog/ContactInfo'
+import './blogpost.css' 
 
 export class BlogPost extends Component {
-    constructor(props){
-        super(props)
-    }
 
     componentDidMount = () => {
-        const id = this.props.match.params.id
-        this.props.onFetchArticle(id)
+        const articleTitle = this.props.match.params.title.replace(/-/g, ' ')
+        this.props.onFetchArticle(articleTitle)
     }
     
     render() {
@@ -26,7 +24,9 @@ export class BlogPost extends Component {
                         this.props.article ?
 
                         <>
-                        <h3 className="black" > { this.props.article.title } </h3>
+                        <h3> 
+                            <span className="black white-text" >{ this.props.article.title } </span>
+                        </h3>
                         <p>published: {this.props.article.date}</p>
                         </>
 
@@ -58,7 +58,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchArticle: id => dispatch(fetchArticle(id))
+        onFetchArticle: title => dispatch(fetchArticle(title))
     }
 }
 
