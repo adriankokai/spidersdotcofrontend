@@ -22,10 +22,10 @@ export const fetchArticleFail = error => {
     }
 }
 
-export const fetchArticle = id => {
+export const fetchArticle = title => {
     return dispatch => {
         dispatch(fetchArticleStart());
-        axios.get(BACKEND_URL + 'blog/article/' + id + '/')
+        axios.get(BACKEND_URL + 'blog/article/' + title + '/')
         .then(res => {
             dispatch(fetchArticleSuccess(res.data))
         })
