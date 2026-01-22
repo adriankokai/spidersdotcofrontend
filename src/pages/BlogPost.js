@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactHtmlParser from 'react-html-parser';
+import HtmlReactParser from 'html-react-parser';
 import { connect } from 'react-redux'
 import { fetchArticle } from '../store/actions/fetchArticle'
 import ContactInfo from '../components/blog/ContactInfo'
