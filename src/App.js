@@ -11,7 +11,7 @@ export class App extends Component {
       <Router>
           <Route exact path='/' component={Blog} />
           <Route exact path='/portfolio' component={Portfolio} />
-          <Route exact path='/blogpost/:id' component={BlogPost} />
+          <Route exact path='/blogpost/:title' component={BlogPost} />
       </Router>
     )
   }

@@ -5,5 +5,6 @@ export const updateObject = (oldObject, updatedProperties) => {
     }
 }
 
-export const BACKEND_URL = 'https://spidersdotcobackend.herokuapp.com/'
+// export const BACKEND_URL = 'https://spidersdotcobackend.herokuapp.com/'
 // export const BACKEND_URL = 'http://127.0.0.1:8000/'
+export const BACKEND_URL = 'https://web-production-00d7c.up.railway.app/'
