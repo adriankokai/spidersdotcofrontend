@@ -1,5 +1,6 @@
 import React from 'react'
 
+// this is the Accounts page component.
 const Accounts = () => {
     return (
         <div>
