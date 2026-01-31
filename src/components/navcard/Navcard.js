@@ -43,6 +43,13 @@ const Navcard = (props) => {
                                 spidersdotco
                             </a> 
                             <a 
+                                href="/accounts" 
+                                className="btn black right" 
+                                style={props.accounts ? linkButtonStylesActive : linkButtonStyles}
+                            >
+                                accounts
+                            </a>
+                            <a 
                                 href="/portfolio" 
                                 className="btn black right" 
                                 style={props.portfolio ? linkButtonStylesActive : linkButtonStyles}
