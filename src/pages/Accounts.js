@@ -1,18 +1,58 @@
 import React from 'react'
+import { useState } from 'react';
+import GetStartedButton from '../components/accounts/getStartedButton';
+import RegistrationForm from '../components/accounts/registrationForm';
 
-// this is the Accounts page component.
-
-const showLoginForm = () => {
-    // Logic to show the login form goes here
-    console.log("Show login form");
-}
-
-const showRegistrationForm = () => {
-    // Logic to show the registration form goes here
-    console.log("Show registration form");
-}
+/*
+this is the Accounts page component. Landing page for spider accounts. 
+It will have a background image, a call to action, and a registration 
+form that will be shown when the user clicks on the "Get Started" button. 
+The registration form will have fields for first name, last name, email, 
+password, confirm password, and phone number. The registration form will 
+also have a submit button that will handle the registration logic when 
+clicked.
+*/
 
 const Accounts = () => {
+    const [showRegister, setShowRegister] = useState(false);
+    const [first_name, setFirstName] = useState('');
+    const [last_name, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirm_password, setConfirmPassword] = useState('');
+    const [phone_number, setPhoneNumber] = useState('');
+
+    const showRegistrationForm = (registrationForm) => {
+        // Logic to show the registration form goes here
+        console.log("Show registration form");
+        setShowRegister(registrationForm);
+    }
+
+    const changeFirstName = (e) => {
+        setFirstName(e);
+    }
+
+    const changeLastName = (e) => {
+        setLastName(e);
+    }
+
+    const changeEmail = (e) => {
+        setEmail(e);
+    }
+
+    const changePassword = (e) => {
+        setPassword(e);
+    }
+    
+    const changeConfirmPassword = (e) => {
+        setConfirmPassword(e);
+    }
+
+    const changePhoneNumber = (e) => {
+        setPhoneNumber(e);
+    }
+
+
     return (
         <div style={{}}>
             <div style={{
@@ -33,10 +73,21 @@ const Accounts = () => {
                         </div>
 
                         <div className="col s12 m6 l6 center" style={{ marginTop: "80px" }}>
-                            <button className="btn-large waves-effect waves-light" type="submit" name="action">
-                                Get Started
-                            </button>
-                            <p className='white-text flow-text' >Join other small businesses today!</p>
+                            {
+                            showRegister ? 
+                            <RegistrationForm 
+                            onChangeFirstName={changeFirstName}
+                            onChangeLastName={changeLastName}
+                            onChangeEmail={changeEmail}
+                            onChangePassword={changePassword}
+                            onChangeConfirmPassword={changeConfirmPassword}
+                            onChangePhoneNumber={changePhoneNumber}
+                            /> 
+                            : 
+                            <GetStartedButton 
+                            onShowRegistrationForm={showRegistrationForm}
+                            /> 
+                            }
                         </div>
                     </div>
                 </div>
