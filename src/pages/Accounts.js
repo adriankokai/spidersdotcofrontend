@@ -1,5 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {  
+    submitRegistrationForm 
+        } from '../store/slice/submitRegistrationFormSlice';
 import GetStartedButton from '../components/accounts/getStartedButton';
 import RegistrationForm from '../components/accounts/registrationForm';
 
@@ -15,12 +19,47 @@ clicked.
 
 const Accounts = () => {
     const [showRegister, setShowRegister] = useState(false);
-    const [first_name, setFirstName] = useState('');
-    const [last_name, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirm_password, setConfirmPassword] = useState('');
-    const [phone_number, setPhoneNumber] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const dispatch = useDispatch();
+
+    const handleSubmitRegistrationForm = (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
+        // Logic to submit the registration form goes here
+
+        //validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            console.log("Invalid email format");
+            alert("Please enter a valid email address e.g name@example.com.");
+            return;
+        }
+
+        //validate phone number format (simple validation for 7 to 15 digits)
+        const phoneRegex = /^\d{7,15}$/;
+        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
+            console.log("Invalid phone number format");
+            alert("Please enter a valid phone number (7-15 digits).");
+            return;
+        }
+        
+        console.log("Submit registration form");
+        if (firstName && lastName && email && password && confirmPassword === password) {
+            console.log("Registration data to submit:", { 
+                firstName, lastName, email, password, confirmPassword, phoneNumber });
+            dispatch(submitRegistrationForm({ 
+                firstName, lastName, email, password, confirmPassword, phoneNumber }));
+        } else {
+            console.log("Please fill in all fields correctly.");
+            alert("Please fill in all fields correctly.");
+        }
+    }
 
     const showRegistrationForm = (registrationForm) => {
         // Logic to show the registration form goes here
@@ -29,44 +68,51 @@ const Accounts = () => {
     }
 
     const changeFirstName = (e) => {
-        setFirstName(e);
+        setFirstName(e.target.value);
     }
-
     const changeLastName = (e) => {
-        setLastName(e);
+        setLastName(e.target.value);
     }
-
     const changeEmail = (e) => {
-        setEmail(e);
+        setEmail(e.target.value);
     }
-
     const changePassword = (e) => {
-        setPassword(e);
+        setPassword(e.target.value);
     }
-    
     const changeConfirmPassword = (e) => {
-        setConfirmPassword(e);
+        setConfirmPassword(e.target.value);
     }
-
     const changePhoneNumber = (e) => {
-        setPhoneNumber(e);
+        setPhoneNumber(e.target.value);
     }
-
 
     return (
         <div style={{}}>
             <div style={{
-                backgroundImage: "url('https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg')",
+                backgroundImage: 
+                "url('https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center"
             }}
             >
                 <div style=
-                {{ background: "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(30,136,229,0.5))" }}>
-                    <div className='row container' style={{ paddingTop: "150px", paddingBottom: "150px" }}>
+                {{ background: 
+                "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(30,136,229,0.5))" 
+                }}>
+                    <div 
+                    className='row container' 
+                    style=
+                    {{ 
+                        paddingTop: "150px", paddingBottom: "150px" 
+                    }}>
                         <div className="col s12 m6 l6"  >
-                            <h3 className='center-align white-text'>EMPOWER YOUR SMALL BUSINESS WITH SMART ACCOUNTING</h3>
-                            <p className='center-align white-text' >We know the financial hurdles of starting up. Get
+                            <h3 
+                            className='center-align white-text'
+                            >
+                                EMPOWER YOUR SMALL BUSINESS WITH SMART ACCOUNTING
+                            </h3>
+                            <p className='center-align white-text' >
+                                We know the financial hurdles of starting up. Get
                                 the tools you need with our affordable easy-to-use
                                 platform designed for your growth.
                             </p>
@@ -75,13 +121,14 @@ const Accounts = () => {
                         <div className="col s12 m6 l6 center" style={{ marginTop: "80px" }}>
                             {
                             showRegister ? 
-                            <RegistrationForm 
+                            <RegistrationForm
                             onChangeFirstName={changeFirstName}
                             onChangeLastName={changeLastName}
                             onChangeEmail={changeEmail}
                             onChangePassword={changePassword}
                             onChangeConfirmPassword={changeConfirmPassword}
                             onChangePhoneNumber={changePhoneNumber}
+                            onSubmitRegistrationForm={handleSubmitRegistrationForm}
                             /> 
                             : 
                             <GetStartedButton 
