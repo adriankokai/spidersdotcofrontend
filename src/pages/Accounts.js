@@ -6,6 +6,7 @@ import {
         } from '../store/slice/submitRegistrationFormSlice';
 import GetStartedButton from '../components/accounts/getStartedButton';
 import RegistrationForm from '../components/accounts/registrationForm';
+import { useNavigate } from 'react-router-dom';
 
 /*
 this is the Accounts page component. Landing page for spider accounts. 
@@ -24,8 +25,20 @@ const Accounts = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [phoneNumberCountryCode, setPhoneNumberCountryCode] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const dispatch = useDispatch();
+
+    const registrationStatus = useSelector((state) => state.submitRegistrationForm?.status);
+
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        console.log("Registration status changed:", registrationStatus);
+        if (registrationStatus === 'succeeded') {
+            console.log("Registration successful! Navigating to company list...");
+            navigate('/companyList');
+        }}, [registrationStatus, navigate] );
 
     const handleSubmitRegistrationForm = (e) => {
         if (e && e.preventDefault) {
@@ -43,18 +56,23 @@ const Accounts = () => {
 
         //validate phone number format (simple validation for 7 to 15 digits)
         const phoneRegex = /^\d{7,15}$/;
-        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
+        if (!phoneRegex.test(phoneNumber)) {
             console.log("Invalid phone number format");
             alert("Please enter a valid phone number (7-15 digits).");
             return;
         }
-        
+
         console.log("Submit registration form");
-        if (firstName && lastName && email && password && confirmPassword === password) {
+        if (firstName && lastName && email && password && 
+            confirmPassword === password && phoneNumber) {
             console.log("Registration data to submit:", { 
-                firstName, lastName, email, password, confirmPassword, phoneNumber });
+                firstName, lastName, email, password, confirmPassword, 
+                phoneNumberCountryCode, phoneNumber });
             dispatch(submitRegistrationForm({ 
-                firstName, lastName, email, password, confirmPassword, phoneNumber }));
+                first_name: firstName, last_name: lastName, 
+                email, password, username: email,
+                phone_number_country_code: phoneNumberCountryCode, 
+                phone_number: phoneNumber }));
         } else {
             console.log("Please fill in all fields correctly.");
             alert("Please fill in all fields correctly.");
@@ -81,6 +99,9 @@ const Accounts = () => {
     }
     const changeConfirmPassword = (e) => {
         setConfirmPassword(e.target.value);
+    }
+    const changePhoneNumberCountryCode = (e) => {
+        setPhoneNumberCountryCode(e.target.value);
     }
     const changePhoneNumber = (e) => {
         setPhoneNumber(e.target.value);
@@ -127,8 +148,10 @@ const Accounts = () => {
                             onChangeEmail={changeEmail}
                             onChangePassword={changePassword}
                             onChangeConfirmPassword={changeConfirmPassword}
+                            onChangePhoneNumberCountryCode={changePhoneNumberCountryCode}
                             onChangePhoneNumber={changePhoneNumber}
                             onSubmitRegistrationForm={handleSubmitRegistrationForm}
+                            phoneNumberCountryCode={phoneNumberCountryCode}
                             /> 
                             : 
                             <GetStartedButton 
