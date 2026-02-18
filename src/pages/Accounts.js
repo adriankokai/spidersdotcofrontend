@@ -7,6 +7,7 @@ import {
 import GetStartedButton from '../components/accounts/getStartedButton';
 import RegistrationForm from '../components/accounts/registrationForm';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/accounts/navbar/Navbar';
 
 /*
 this is the Accounts page component. Landing page for spider accounts. 
@@ -108,6 +109,7 @@ const Accounts = () => {
     }
 
     return (
+        <div>
         <div style={{}}>
             <div style={{
                 backgroundImage: 
@@ -120,12 +122,14 @@ const Accounts = () => {
                 {{ background: 
                 "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(30,136,229,0.5))" 
                 }}>
+                    <Navbar />
                     <div 
                     className='row container' 
                     style=
                     {{ 
                         paddingTop: "150px", paddingBottom: "150px" 
                     }}>
+                        
                         <div className="col s12 m6 l6"  >
                             <h3 
                             className='center-align white-text'
@@ -162,6 +166,7 @@ const Accounts = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
