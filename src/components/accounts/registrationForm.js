@@ -1,8 +1,5 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { setFirstName, setLastName, setEmail, setPassword, 
-        setConfirmPassword, setPhoneNumber, submitRegistrationForm 
-        } from '../../store/slice/submitRegistrationFormSlice';
+import { useEffect } from 'react'
+import M from 'materialize-css/dist/js/materialize.min.js';
        
 export default function RegistrationForm(props) {
   const { 
@@ -10,9 +7,15 @@ export default function RegistrationForm(props) {
     onChangeLastName, 
     onChangeEmail, 
     onChangePassword, 
-    onChangeConfirmPassword, 
+    onChangeConfirmPassword,
+    onChangePhoneNumberCountryCode, 
     onChangePhoneNumber } = props;
-  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Initialize the select element with Materialize CSS
+    const elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems, {});
+  }, []);
 
   return (
     <div className='row' style={{marginTop: "-100px"}} >
@@ -52,7 +55,20 @@ export default function RegistrationForm(props) {
           onChange={(e) => onChangeConfirmPassword(e)} />
           <label htmlFor='confirm_password'>Confirm Password</label>
         </div>
-        <div className='input-field col s12'>
+        <div className='input-field col s4'>
+          <select id='phone_number_country_code'
+          value={props.phoneNumberCountryCode} 
+          onChange={(e) => onChangePhoneNumberCountryCode(e)} 
+          className='icons'
+          >
+            <option value="+1" data-icon="https://flagcdn.com/w80/us.png">+1 (USA)</option>
+            <option value="+1" data-icon="https://flagcdn.com/w80/ca.png">+1 (CA)</option>
+            <option value="+44" data-icon="https://flagcdn.com/w80/gb.png">+44 (UK)</option>
+            <option value="+263" data-icon="https://flagcdn.com/w80/zw.png">+263 (ZW)</option>
+          </select>
+          <label htmlFor='phone_number_country_code'>Code</label>
+        </div>  
+        <div className='input-field col s8'>
           <input 
           id='phone_number' type='tel' className='validate' 
           onChange={(e) => onChangePhoneNumber(e)} />

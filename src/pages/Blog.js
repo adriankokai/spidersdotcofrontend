@@ -38,7 +38,7 @@ export class Blog extends Component {
 
 const mapStateToProps = state => {
     return {
-        articles: state.fetchArticles.articles
+        articles: state.fetchArticles?.articles
     }
 }
 

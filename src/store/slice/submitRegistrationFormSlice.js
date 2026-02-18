@@ -6,7 +6,7 @@ export const submitRegistrationForm = createAsyncThunk(
     'submitRegistrationForm/submit',
     async (formData, thunkAPI) => {
         try {
-            const response = await axios.post(BACKEND_URL + 'accounts/register/', formData);
+            const response = await axios.post(BACKEND_URL + 'users/register/', formData);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -18,32 +18,9 @@ export const submitRegistrationFormSlice = createSlice({
     initialState: {
         status: 'idle',
         error: null,
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        phoneNumber: ''
     },
     reducers: {
-        setFirstName: (state, action) => {
-            state.firstName = action.payload;
-        },
-        setLastName: (state, action) => {
-            state.lastName = action.payload;
-        },
-        setEmail: (state, action) => {
-            state.email = action.payload;
-        },
-        setPassword: (state, action) => {
-            state.password = action.payload;
-        },
-        setConfirmPassword: (state, action) => {
-            state.confirmPassword = action.payload;
-        },
-        setPhoneNumber: (state, action) => {
-            state.phoneNumber = action.payload;
-        }
+    
     },
     extraReducers: (builder) => {
         builder

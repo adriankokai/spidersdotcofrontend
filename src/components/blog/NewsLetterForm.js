@@ -57,8 +57,8 @@ export class NewsLetterForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.submitApplication.loading,
-        message: state.submitApplication.message
+        loading: state.submitApplication?.loading,
+        message: state.submitApplication?.message
     }
 }
 
