@@ -31,6 +31,8 @@ export const submitRegistrationFormSlice = createSlice({
             .addCase(submitRegistrationForm.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.error = null;
+                console.log("Registration successful! Response data:", action.payload);
+                localStorage.setItem('token', action.payload.token);
             })
             .addCase(submitRegistrationForm.rejected, (state, action) => {
                 state.status = 'failed';

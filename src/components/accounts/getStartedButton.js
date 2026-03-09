@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function GetStartedButton({ onShowRegistrationForm }) {
+export default function GetStartedButton(props) {
   return (
     <div>
         <button 
         className="btn-large waves-effect waves-light" 
         type="submit" 
         name="action"
-        onClick={() => onShowRegistrationForm(true)}
+        onClick={() => props.onChangeShowRegister('showRegistrationForm')}
         >
             Get Started
         </button>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from '../../../images/spidersdotcoLogo.jpg';
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <div className='navbar-fixed'>
     <nav className="transparent z-depth-0">
@@ -11,7 +11,13 @@ export default function Navbar() {
                 Spider Accounts
             </a>
             <ul id="nav-mobile" className="right col">
-                <li><a href="/login" className='whitetext btn darken-1' >LOGIN</a></li>
+                <li><button 
+                    className='whitetext btn darken-1' 
+                    onClick={() => props.onChangeShowRegister(props.showRegister === "showLogin" ? "showRegistrationForm" : "showLogin")}
+                    >{
+                      props.showRegister === "showLogin" ? "Register" : "Login"
+                    }
+                    </button></li>
             </ul>
         </div>
     </nav>

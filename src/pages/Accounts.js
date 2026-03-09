@@ -8,6 +8,8 @@ import GetStartedButton from '../components/accounts/getStartedButton';
 import RegistrationForm from '../components/accounts/registrationForm';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/accounts/navbar/Navbar';
+import { render } from '@testing-library/react';
+import Login from '../components/accounts/Login';
 
 /*
 this is the Accounts page component. Landing page for spider accounts. 
@@ -20,7 +22,7 @@ clicked.
 */
 
 const Accounts = () => {
-    const [showRegister, setShowRegister] = useState(false);
+    const [showRegister, setShowRegister] = useState('showGetStartedButton');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -81,9 +83,11 @@ const Accounts = () => {
     }
 
     const showRegistrationForm = (registrationForm) => {
-        // Logic to show the registration form goes here
-        console.log("Show registration form");
+        // Logic to show the registration form or show alternative 
+        // related components goes here
+        console.log("Current showRegister state:", showRegister);
         setShowRegister(registrationForm);
+        console.log("changed showRegister state to:", showRegister);
     }
 
     const changeFirstName = (e) => {
@@ -111,18 +115,13 @@ const Accounts = () => {
     return (
         <div>
         <div style={{}}>
-            <div style={{
-                backgroundImage: 
-                "url('https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-            }}
+            <div style={accountingBackground}
             >
                 <div style=
                 {{ background: 
                 "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(30,136,229,0.5))" 
                 }}>
-                    <Navbar />
+                    <Navbar showRegister={showRegister} onChangeShowRegister={showRegistrationForm} />
                     <div 
                     className='row container' 
                     style=
@@ -145,22 +144,36 @@ const Accounts = () => {
 
                         <div className="col s12 m6 l6 center" style={{ marginTop: "80px" }}>
                             {
-                            showRegister ? 
-                            <RegistrationForm
-                            onChangeFirstName={changeFirstName}
-                            onChangeLastName={changeLastName}
-                            onChangeEmail={changeEmail}
-                            onChangePassword={changePassword}
-                            onChangeConfirmPassword={changeConfirmPassword}
-                            onChangePhoneNumberCountryCode={changePhoneNumberCountryCode}
-                            onChangePhoneNumber={changePhoneNumber}
-                            onSubmitRegistrationForm={handleSubmitRegistrationForm}
-                            phoneNumberCountryCode={phoneNumberCountryCode}
-                            /> 
-                            : 
-                            <GetStartedButton 
-                            onShowRegistrationForm={showRegistrationForm}
-                            /> 
+                               showRegister === "showRegistrationForm" ?
+
+                                            <RegistrationForm
+                                        onChangeFirstName={changeFirstName}
+                                        onChangeLastName={changeLastName}
+                                        onChangeEmail={changeEmail}
+                                        onChangePassword={changePassword}
+                                        onChangeConfirmPassword={changeConfirmPassword}
+                                        onChangePhoneNumberCountryCode={changePhoneNumberCountryCode}
+                                        onChangePhoneNumber={changePhoneNumber}
+                                        onSubmitRegistrationForm={handleSubmitRegistrationForm}
+                                        phoneNumberCountryCode={phoneNumberCountryCode}
+                                        /> 
+                                        :
+                                showRegister === "showGetStartedButton" ?
+                                
+                                        <GetStartedButton 
+                                        onChangeShowRegister={showRegistrationForm}
+                                        />
+                                        :
+                                showRegister === "showLogin" ?
+                                    <Login
+                                    showRegister
+                                    onChangeShowRegister={showRegistrationForm} 
+                                    />
+                                    :
+                                    <GetStartedButton 
+                                    onChangeShowRegister={showRegistrationForm}
+                                        />
+                                        
                             }
                         </div>
                     </div>
@@ -170,5 +183,12 @@ const Accounts = () => {
         </div>
     )
 }
+
+export const accountingBackground = {
+                backgroundImage: 
+                "url('https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+            }
 
 export default Accounts

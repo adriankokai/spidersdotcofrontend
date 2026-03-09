@@ -75,12 +75,12 @@ export default function RegistrationForm(props) {
           <label htmlFor='phone_number'>Phone Number</label>
         </div>
       </form>
-      <button
+     <button
       className='btn waves-effect waves-light' 
       type='submit' name='action'
       onClick={props.onSubmitRegistrationForm} 
       > Register 
-      </button>
+      </button> 
     </div>
   )
 }
