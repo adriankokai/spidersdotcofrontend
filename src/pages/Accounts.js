@@ -121,7 +121,7 @@ const Accounts = () => {
                 {{ background: 
                 "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(30,136,229,0.5))" 
                 }}>
-                    <Navbar showRegister={showRegister} onChangeShowRegister={showRegistrationForm} />
+                    <Navbar page={'accounts'} showRegister={showRegister} onChangeShowRegister={showRegistrationForm} />
                     <div 
                     className='row container' 
                     style=
