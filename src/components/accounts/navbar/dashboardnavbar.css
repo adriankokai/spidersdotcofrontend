@@ -1,0 +1,28 @@
+nav {
+    height: 50px;
+    line-height: 50px;
+}
+nav, h5, i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 50px;
+    line-height: 50px;
+}
+nav .button-collapse i, img.spiderlogo {
+    height: 50px;
+    line-height: 50px;
+}
+nav .brand-logo {
+    font-size: 1.6rem; /* Adjust font size if needed to fit the new height */
+    line-height: 50px; /* Ensure logo is vertically centered */
+}
+
+
+
+/* For screens larger than 600px (Materialize default breakpoint) */
+@media only screen and (min-width: 601px) {
+    nav, nav .nav-wrapper i, img.spiderlogo, nav a.button-collapse, nav a.button-collapse i {
+        height: 40px;
+        line-height: 40px;
+    }
+
+  
+}
