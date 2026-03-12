@@ -6,6 +6,8 @@ import fetchCompanyListReducer from './slice/fetchCompanyListSlice';
 import addCompanyReducer from './slice/addCompanySlice';
 import fetchCountryListReducer from './slice/fetchCountryListSlice';
 import fetchCurrencyListReducer from './slice/fetchCurrencyListSlice';
+import fetchCompanyReducer from './slice/fetchCompanySlice';
+import fetchUserReducer from './slice/fetchUserSlice';
 
 const store = configureStore({
     reducer: {
@@ -17,6 +19,8 @@ const store = configureStore({
         addCompany: addCompanyReducer,
         fetchCountryList: fetchCountryListReducer,
         fetchCurrencyList: fetchCurrencyListReducer,
+        fetchCompany: fetchCompanyReducer,
+        fetchUser: fetchUserReducer,
     }
 });
 
