@@ -3,8 +3,8 @@ import DashboardNavbar from '../components/accounts/navbar/DashboardNavbar';
 
 /*
 This is the Dashboard page component. It will display the dashboard for a 
-specific company. The dashboard will have a navbar, a sidebar, and a main 
-content area. The navbar will have the company name and a logout button. 
+specific organisation. The dashboard will have a navbar, a sidebar, and a main 
+content area. The navbar will have the organisation name and a logout button. 
 The sidebar will have links to different sections of the dashboard such as 
 "Receipts", "Invoices", "Chart of Accounts", etc. The main content area 
 will display the content for the selected section of the dashboard. 

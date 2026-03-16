@@ -39,8 +39,8 @@ const Accounts = () => {
     React.useEffect(() => {
         console.log("Registration status changed:", registrationStatus);
         if (registrationStatus === 'succeeded') {
-            console.log("Registration successful! Navigating to company list...");
-            navigate('/companyList');
+            console.log("Registration successful! Navigating to organisation list...");
+            navigate('/organisationList');
         }}, [registrationStatus, navigate] );
 
     const handleSubmitRegistrationForm = (e) => {

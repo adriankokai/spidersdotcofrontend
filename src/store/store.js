@@ -2,11 +2,11 @@ import {configureStore} from '@reduxjs/toolkit';
 import submitRegistrationFormReducer from './slice/submitRegistrationFormSlice';
 import fetchArticleReducer from './reducers/fetchArticle';
 import loginReducer from './slice/loginSlice';
-import fetchCompanyListReducer from './slice/fetchCompanyListSlice';
-import addCompanyReducer from './slice/addCompanySlice';
+import fetchOrganisationListReducer from './slice/fetchOrganisationListSlice';
+import addOrganisationReducer from './slice/addOrganisationSlice';
 import fetchCountryListReducer from './slice/fetchCountryListSlice';
 import fetchCurrencyListReducer from './slice/fetchCurrencyListSlice';
-import fetchCompanyReducer from './slice/fetchCompanySlice';
+import fetchOrganisationReducer from './slice/fetchOrganisationSlice';
 import fetchUserReducer from './slice/fetchUserSlice';
 
 const store = configureStore({
@@ -15,11 +15,11 @@ const store = configureStore({
         submitRegistrationForm: submitRegistrationFormReducer,
         fetchArticle: fetchArticleReducer,
         login: loginReducer,
-        fetchCompanyList: fetchCompanyListReducer,
-        addCompany: addCompanyReducer,
+        fetchOrganisationList: fetchOrganisationListReducer,
+        addOrganisation: addOrganisationReducer,
         fetchCountryList: fetchCountryListReducer,
         fetchCurrencyList: fetchCurrencyListReducer,
-        fetchCompany: fetchCompanyReducer,
+        fetchOrganisation: fetchOrganisationReducer,
         fetchUser: fetchUserReducer,
     }
 });
