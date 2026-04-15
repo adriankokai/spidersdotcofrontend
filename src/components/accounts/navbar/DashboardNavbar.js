@@ -10,7 +10,7 @@ export default function Navbar(props) {
 
   return (
     <div className='navbar-fixed blue dashboard-navbar' >
-    <nav className="grey lighten-2 z-depth-0">
+    <nav className="grey lighten-1 z-depth-0">
         <div className="nav-wrapper transparent row">
             <img src={Logo}  className='col  spiderlogo' />
             

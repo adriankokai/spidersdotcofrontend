@@ -1,7 +1,7 @@
 import React from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js';
 import DashboardMobileSidenav from './DashboardMobileSidenav';
-
+import CreateDropdown from './CreateDropdown';
 /*
 This is the DashboardSidenav component. It will display the sidebar for the 
 dashboard. The sidebar will have links to different sections of the dashboard 
@@ -13,12 +13,16 @@ component mounts.
 */
 
 export default function DashboardSidenav() {
+    
 
     //Initilize the sidenav when the component mounts
     React.useEffect(() => {
         const sidenav = document.querySelectorAll('.sidenav');
         M.Sidenav.init(sidenav, {edge: 'left', inDuration: 250, outDuration: 200});
+
     }, []);
+
+   
 
   return (
     <div>
@@ -28,42 +32,40 @@ export default function DashboardSidenav() {
     minHeight: '100vh', position: 'fixed'}} >
         
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  center-block' style={{fontSize: '1.8rem', marginTop: '2vh'}} >
-                Create
-                <i class="material-icons white-text text-darken-2 ">add</i>
-            </a>
+            
+            <CreateDropdown />
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  center-block' style={{fontSize: '1.6rem'}} >
+            <a href="#" className='teal-text ' style={{fontSize: '1.5rem'}} >
                 Receipts
             </a>
             
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  center-block' style={{fontSize: '1.6rem'}} >
+            <a href="#" className='teal-text  ' style={{fontSize: '1.5rem'}} >
                 Invoices
             </a>
             
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  center-block' style={{fontSize: '1.6rem'}} >
+            <a href="#" className='teal-text  ' style={{fontSize: '1.5rem'}} >
                 Bills
             </a>
             
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  center-block' style={{fontSize: '1.6rem'}} >
+            <a href="#" className='teal-text  ' style={{fontSize: '1.5rem'}} >
                 Inventory
             </a>
             
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  center-block' style={{fontSize: '1.58rem'}} >
+            <a href="#" className='teal-text  ' style={{fontSize: '1.5rem'}} >
                
                 Chart of Accounts
             </a>
