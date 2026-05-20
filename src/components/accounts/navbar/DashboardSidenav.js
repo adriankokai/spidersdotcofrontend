@@ -12,7 +12,7 @@ be initialized using the Materialize CSS JavaScript library when the
 component mounts.
 */
 
-export default function DashboardSidenav() {
+export default function DashboardSidenav(props) {
     
 
     //Initilize the sidenav when the component mounts
@@ -33,7 +33,7 @@ export default function DashboardSidenav() {
         
         <div className=' valign-wrapper' style={{height: '12vh'}} >
             
-            <CreateDropdown />
+            <CreateDropdown changeMainAreaContent={props.changeMainAreaContent} />
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
@@ -58,8 +58,9 @@ export default function DashboardSidenav() {
         </div>
         <div className='divider' style={{marginLeft: '-15px', marginRight: '-15px'}} ></div>
         <div className=' valign-wrapper' style={{height: '12vh'}} >
-            <a href="#" className='teal-text  ' style={{fontSize: '1.5rem'}} >
-                Inventory
+            <a href="#" className='teal-text  ' style={{fontSize: '1.5rem'}} onClick={() => props.changeMainAreaContent("displayProductsAndServices")} >
+                Products and<br/>
+                Services
             </a>
             
         </div>
