@@ -2,11 +2,25 @@ import React, { use } from 'react';
 import Logo from '../../../images/spidersdotcoLogo.jpg';
 import './dashboardnavbar.css';
 import { useSelector, useDispatch } from 'react-redux';
-
+import M from 'materialize-css/dist/js/materialize.min.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar(props) {
   const organisation = useSelector((state) => state.fetchOrganisation?.organisation);
   const user = useSelector((state) => state.fetchUser?.user);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    // Initialize the dropdown
+    const dropdownElems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdownElems, { constrainWidth: false });
+  }, []);
+
+  const switchOrganisation = () => {
+    // Logic to switch organisation goes here
+    console.log("Switching organisation...");
+    navigate('/organisationList');
+  }
 
   return (
     <div className='navbar-fixed blue dashboard-navbar' >
@@ -17,7 +31,12 @@ export default function Navbar(props) {
             <h6 href="#" className="brand teal-text col  hide-on-small-and-down"  >
                 Spider Accounts
             </h6>
-            <h6 className='col center-align' >{organisation?.name || "Organisation Name"}</h6>
+            <h6 className='col center-align' >
+              <ul id="dropdown1nav" className="dropdown-content">
+                <li><a href="#" onClick={() => switchOrganisation()} >switch organisation</a></li>
+              </ul>
+              <a href="#" data-target="dropdown1nav" className='dropdown-trigger'>{organisation?.name || "Organisation Name"}</a>
+            </h6>
             <ul id="nav-mobile" className="right col ">
                 <li className=' hide-on-med-and-down'  >
                   <a href="#" className=' no-padding' >
