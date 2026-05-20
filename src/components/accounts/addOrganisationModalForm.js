@@ -20,6 +20,7 @@ export default function AddOrganisationModalForm() {
     const countryList = useSelector((state) => state.fetchCountryList?.countries);
     const baseCurrencyList = useSelector((state) => state.fetchCurrencyList?.currencies);
     const addOrganisationStatus = useSelector((state) => state.addOrganisation?.status);
+    const addOrganisationError = useSelector((state) => state.addOrganisation?.error);
     const dispatch = useDispatch();
 
     React.useEffect(() => {
@@ -59,7 +60,10 @@ export default function AddOrganisationModalForm() {
             setCountry('');
             setBaseCurrency('');
         }
-    }, [addOrganisationStatus, dispatch]);
+        if (addOrganisationStatus === 'failed') {
+            alert(addOrganisationError?.name || "Failed to add organisation. Please try again.");
+        }
+    }, [addOrganisationStatus, addOrganisationError, dispatch]);
 
     const handleAddOrganisation = () => {
         // Logic to add a new organisation goes here
