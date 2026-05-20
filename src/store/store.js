@@ -8,7 +8,14 @@ import fetchCountryListReducer from './slice/fetchCountryListSlice';
 import fetchCurrencyListReducer from './slice/fetchCurrencyListSlice';
 import fetchOrganisationReducer from './slice/fetchOrganisationSlice';
 import fetchUserReducer from './slice/fetchUserSlice';
-
+import fetchItemCategoriesReducer from './slice/fetchItemCategoriesSlice';
+import addItemCategoryReducer from './slice/addItemCategorySlice';
+import fetchIncomeAccountsReducer from './slice/fetchIncomeAccountsSlice';
+import fetchExpenseAccountsReducer from './slice/fetchExpenseAccountsSlice';
+import addIncomeAccountReducer from './slice/addIncomeAccountSlice';
+import addExpenseAccountReducer from './slice/addExpenseAccountSlice';
+import addInventoryItemReducer from './slice/addInventoryItemSlice';
+import fetchProductsAndServicesReducer from './slice/fetchProductsAndServicesSlice';
 const store = configureStore({
     reducer: {
         // add your reducers here
@@ -21,6 +28,14 @@ const store = configureStore({
         fetchCurrencyList: fetchCurrencyListReducer,
         fetchOrganisation: fetchOrganisationReducer,
         fetchUser: fetchUserReducer,
+        fetchItemCategories: fetchItemCategoriesReducer,
+        addItemCategory: addItemCategoryReducer,
+        fetchIncomeAccounts: fetchIncomeAccountsReducer,
+        fetchExpenseAccounts: fetchExpenseAccountsReducer,
+        addIncomeAccount: addIncomeAccountReducer,
+        addExpenseAccount: addExpenseAccountReducer,
+        addInventoryItem: addInventoryItemReducer,
+        fetchProductsAndServices: fetchProductsAndServicesReducer,
     }
 });
 
