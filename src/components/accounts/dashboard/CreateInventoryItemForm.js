@@ -6,10 +6,12 @@ import { fetchIncomeAccounts } from '../../../store/slice/fetchIncomeAccountsSli
 import { fetchExpenseAccounts } from '../../../store/slice/fetchExpenseAccountsSlice';
 import { fetchItemCategories } from '../../../store/slice/fetchItemCategoriesSlice';
 import { addInventoryItem } from '../../../store/slice/addInventoryItemSlice';
+import { fetchAssetAccounts } from '../../../store/slice/fetchAssetAccountsSlice';
 import { useDispatch } from 'react-redux';
 import AddIncomeAccountModalForm from './AddIncomeAccountModalForm';
 import AddExpenseAccountModalForm from './AddExpenseAccountModalForm';
 import { useParams } from 'react-router-dom';
+import AddAssetAccountModalForm from './AddAssetAccountModalForm';
 
 export default function CreateInventoryItemForm(props) {
     const [name, setName] = React.useState('');
@@ -19,6 +21,7 @@ export default function CreateInventoryItemForm(props) {
     const [salesPrice, setSalesPrice] = React.useState('');
     const [incomeAccount, setIncomeAccount] = React.useState('');
     const [expenseAccount, setExpenseAccount] = React.useState('');
+    const [assetAccount, setAssetAccount] = React.useState('');
     const [cost, setCost] = React.useState('');
     const [quantityOnHand, setQuantityOnHand] = React.useState('');
     const [selectedProductService, setSelectedProductService] = React.useState('inventory');
@@ -30,6 +33,7 @@ export default function CreateInventoryItemForm(props) {
     const itemCategories = useSelector((state) => state.fetchItemCategories?.itemCategories);
     const incomeAccounts = useSelector((state) => state.fetchIncomeAccounts?.incomeAccounts);
     const expenseAccounts = useSelector((state) => state.fetchExpenseAccounts?.expenseAccounts);
+    const assetAccounts = useSelector((state) => state.fetchAssetAccounts?.assetAccounts);  
 
     const organisationId = useParams().id;
 
@@ -44,6 +48,7 @@ export default function CreateInventoryItemForm(props) {
         dispatch(fetchIncomeAccounts(organisationId));
         dispatch(fetchExpenseAccounts(organisationId));
         dispatch(fetchItemCategories(organisationId));
+        dispatch(fetchAssetAccounts(organisationId));
     }, [organisationId, dispatch]);
 
     React.useEffect(() => {
@@ -78,6 +83,7 @@ export default function CreateInventoryItemForm(props) {
             sales_price: parseFloat(salesPrice),
             income_account: incomeAccount,
             expense_account: expenseAccount,
+            asset_account: assetAccount,
             cost: parseFloat(cost),
             quantity_on_hand: parseInt(quantityOnHand, 10),
             tax_rate: parseFloat(taxRate)
@@ -95,6 +101,7 @@ export default function CreateInventoryItemForm(props) {
             setSalesPrice('');
             setIncomeAccount('');
             setExpenseAccount('');
+            setAssetAccount('');
             setCost('');
             setQuantityOnHand('');
             setTaxRate('');
@@ -219,6 +226,31 @@ export default function CreateInventoryItemForm(props) {
                 <label htmlFor="tax_rate">Tax Rate</label>
             </div>
         </div>
+
+        { /* Section D */}
+        <div class="row">
+            <p className='s12 center'>section D</p>
+            <AddAssetAccountModalForm selectedProductService={selectedProductService} />
+            <div class="col s12 m6 input-field">
+                <select
+                id="asset_account"
+                value={assetAccount}
+                className='validate'
+                onChange={(e) => setAssetAccount(e.target.value)}
+                >
+                    <option value="" disabled defaultValue={''}>Select Asset A/c</option>
+                    {assetAccounts.map((account) => (
+                        <option key={account.id} value={account.id}>{account.name}</option>
+                    ))}
+                </select>
+                <label htmlFor="asset_account">Asset Account</label>
+            </div>
+            <div class="col s12 m6">
+                <a href='#' className='btn modal-trigger ' data-target='modalAddAssetAccount'> <i className='material-icons'>add</i> </a>
+            </div>
+                    
+        </div>
+
         { /*footer */ }
         <div className='row'>
             <div className='col s12 center'>

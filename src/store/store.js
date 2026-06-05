@@ -16,6 +16,9 @@ import addIncomeAccountReducer from './slice/addIncomeAccountSlice';
 import addExpenseAccountReducer from './slice/addExpenseAccountSlice';
 import addInventoryItemReducer from './slice/addInventoryItemSlice';
 import fetchProductsAndServicesReducer from './slice/fetchProductsAndServicesSlice';
+import addAssetAccountReducer from './slice/addAssetAccountSlice';
+import fetchAssetAccountsReducer from './slice/fetchAssetAccountsSlice';
+
 const store = configureStore({
     reducer: {
         // add your reducers here
@@ -36,6 +39,8 @@ const store = configureStore({
         addExpenseAccount: addExpenseAccountReducer,
         addInventoryItem: addInventoryItemReducer,
         fetchProductsAndServices: fetchProductsAndServicesReducer,
+        addAssetAccount: addAssetAccountReducer,
+        fetchAssetAccounts: fetchAssetAccountsReducer,
     }
 });
 
